@@ -8,7 +8,7 @@ import picamera
 import time
 import os
 config = configparser.ConfigParser()
-config.read('/home/snowballspy/config/config.ini')
+config.read('/home/pi/snowballspy/config/config.ini')
 
 def video_to_gcs(filename_):
     client = storage.client(config['storage']['project_name'])
