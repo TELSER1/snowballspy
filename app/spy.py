@@ -65,7 +65,7 @@ while True:
                 cam.annotate_background = picamera.Color('black')
                 cam.start_recording('/home/pi/video.h264')
                 while time.time() < time_end:
-                    print(time.time)
+                    print(time.time())
                     cam.annotate_text = datetime.now().strftime('%d-%m-%y %H:%M:%S')
                     cam.wait_recording(0.2)
                 cam.stop_recording()
