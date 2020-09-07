@@ -12,8 +12,8 @@ config = configparser.ConfigParser()
 config.read('/home/pi/snowballspy/config/config.ini')
 
 def video_to_gcs(filename_):
-    client = storage.client(config['storage']['project_name'])
-    bucket = client.buccket(config['storage']['bucket_name'])
+    client = storage.Client(config['storage']['project_name'])
+    bucket = client.bucket(config['storage']['bucket_name'])
     blob = bucket.blob("videos/" + filename_)
     blob.upload_from_filename("/home/pi/videos/" + filename_)
     logging.info("wrote file {0} to GCS".format(filename_))
