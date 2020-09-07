@@ -7,6 +7,7 @@ from subprocess import call
 import picamera
 import time
 import os
+import numpy as np
 config = configparser.ConfigParser()
 config.read('/home/pi/snowballspy/config/config.ini')
 
@@ -63,7 +64,7 @@ while True:
                 cam.resolution=(1024,768)
                 cam.annotate_background = picamera.Color('black')
                 cam.start_recording('/home/pi/video.h264')
-                while time.time() < t_end:
+                while time.time() < time_end:
                     cam.annotate_text = datetime.now().strftime('%d-%m-%y %H:%M:%S')
                     cam.wait_recording(0.2)
                 cam.stop_recording()
