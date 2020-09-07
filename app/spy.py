@@ -57,14 +57,15 @@ while True:
     if np.sum(np.abs(current_image - previous_image)) > threshold:
             logging.info('Motion detected')
             print('Motion detected')
-            time_end = time.time() + 60*duration
+            time_end = time.time() + duration
             ts = '{:%Y%m%d-%H%M%S}'.format(datetime.now())
-
+            print(time_end)
             with picamera.PiCamera() as cam:
                 cam.resolution=(1024,768)
                 cam.annotate_background = picamera.Color('black')
                 cam.start_recording('/home/pi/video.h264')
                 while time.time() < time_end:
+                    print(time.time)
                     cam.annotate_text = datetime.now().strftime('%d-%m-%y %H:%M:%S')
                     cam.wait_recording(0.2)
                 cam.stop_recording()
